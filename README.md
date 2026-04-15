@@ -112,6 +112,10 @@ releases/wechat-draft-publish.skill
 
 你后面可以把这个文件放到 GitHub Releases 页面，方便别人下载后手动安装。
 
+下载地址（发布后可用）：
+
+- [前往 Releases 页面下载 `.skill` 安装包](https://github.com/danazd91-collab/wechat-mp-skills/releases)
+
 ## 最小使用流程
 
 1. 复制 `.env.example` 为 `.env`
