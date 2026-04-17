@@ -6,6 +6,7 @@ $repoRoot = Split-Path -Parent $PSScriptRoot
 $skillDir = Join-Path $repoRoot $SkillName
 $releaseDir = Join-Path $repoRoot "releases"
 $skillPackagePath = Join-Path $releaseDir "$SkillName.skill"
+$zipPackagePath = Join-Path $releaseDir "$SkillName.zip"
 $tempZipPath = Join-Path ([System.IO.Path]::GetTempPath()) ("{0}-{1}.zip" -f $SkillName, [guid]::NewGuid().ToString("N"))
 
 if (-not (Test-Path -LiteralPath $skillDir)) {
@@ -18,16 +19,22 @@ if (Test-Path -LiteralPath $skillPackagePath) {
     Remove-Item -LiteralPath $skillPackagePath -Force
 }
 
+if (Test-Path -LiteralPath $zipPackagePath) {
+    Remove-Item -LiteralPath $zipPackagePath -Force
+}
+
 if (Test-Path -LiteralPath $tempZipPath) {
     Remove-Item -LiteralPath $tempZipPath -Force
 }
 
 Compress-Archive -Path (Join-Path $skillDir '*') -DestinationPath $tempZipPath -Force
 Copy-Item -LiteralPath $tempZipPath -Destination $skillPackagePath -Force
+Copy-Item -LiteralPath $tempZipPath -Destination $zipPackagePath -Force
 Remove-Item -LiteralPath $tempZipPath -Force
 
 [PSCustomObject]@{
     ok = $true
     skill = $SkillName
     package = $skillPackagePath
+    zip = $zipPackagePath
 }
