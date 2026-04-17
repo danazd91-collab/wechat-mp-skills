@@ -28,7 +28,9 @@ wechat-mp-skills/
 └── wechat-draft-publish/
     ├── .env.example
     ├── SKILL.md
+    ├── publish-wechat-draft.ps1
     ├── references/
+    │   ├── bijixia-theme.md
     │   └── minimal-plan.md
     └── scripts/
         ├── markdown-to-wechat-html.mjs
@@ -137,8 +139,22 @@ powershell -ExecutionPolicy Bypass -File "C:\path\to\wechat-draft-publish\script
 ```powershell
 powershell -ExecutionPolicy Bypass -File "C:\path\to\wechat-draft-publish\scripts\publish-markdown-to-wechat-draft.ps1" `
   -MarkdownFile "D:\path\article.md" `
-  -CoverImagePath "D:\path\cover.jpg"
+  -CoverImagePath "D:\path\cover.jpg" `
+  -Theme "minimal"
 ```
+
+可选排版主题：
+
+- `minimal`：简洁、克制，适合大多数正文
+- `official`：更正式一点的标题层级和留白
+- `khazix`：更偏叙事型公众号长文的暖色排版
+- `bijixia`：偏内容型、偏编辑感的公众号长文排版
+
+支持的语义块：
+
+- `:::intro ... :::`：导语 / 编者按
+- `:::card ... :::`：信息卡片 / 说明块
+- `:::quote ... :::`：金句 / 强调引用
 
 ## 自然语言触发示例
 

@@ -4,6 +4,9 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$MarkdownFile,
 
+    [ValidateSet("minimal", "official", "khazix", "bijixia")]
+    [string]$Theme = "minimal",
+
     [string]$CoverImagePath = "",
 
     [string]$ThumbMediaId = "",
@@ -56,7 +59,7 @@ try {
         $Title = Get-MarkdownTitle -Path $MarkdownFile
     }
 
-    node $converter $MarkdownFile $tempHtml
+    node $converter $MarkdownFile $tempHtml $Theme
 
     $invokeParams = @{
         Title = $Title
@@ -86,6 +89,7 @@ try {
         mediaId = $result.mediaId
         articleCount = $result.articleCount
         title = $Title
+        theme = $Theme
     }
 }
 finally {

@@ -28,7 +28,8 @@ Read [references/minimal-plan.md](references/minimal-plan.md) when you need the 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\scripts\publish-markdown-to-wechat-draft.ps1" `
   -MarkdownFile "D:\path\article.md" `
-  -CoverImagePath "D:\path\cover.jpg"
+  -CoverImagePath "D:\path\cover.jpg" `
+  -Theme "minimal"
 ```
 
 6. Return the `mediaId`, final title, and file path used for publishing.
@@ -40,6 +41,8 @@ powershell -ExecutionPolicy Bypass -File ".\scripts\publish-markdown-to-wechat-d
 - Stop and ask when the cover image is missing.
 - Prefer the first Markdown `# ` heading as the title when no explicit title is passed.
 - Use the local scripts in this skill folder, not browser automation.
+- Prefer `minimal` as the default theme unless the user explicitly asks for a more formal, more narrative, or more编辑感的公众号排版。
+- When the Markdown includes `:::intro`, `:::card`, or `:::quote`, preserve those semantic blocks and let the selected theme render them.
 
 ## Common Commands
 
@@ -54,5 +57,6 @@ Publish a Markdown article:
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\scripts\publish-markdown-to-wechat-draft.ps1" `
   -MarkdownFile "D:\path\article.md" `
-  -CoverImagePath "D:\path\cover.jpg"
+  -CoverImagePath "D:\path\cover.jpg" `
+  -Theme "minimal"
 ```
