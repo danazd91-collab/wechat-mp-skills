@@ -9,6 +9,22 @@
 - 使用不同排版主题发布到草稿箱
 - 用语义块写作，再交给主题统一渲染
 
+## 推荐给谁用 / 最适合什么场景
+
+这套仓库尤其适合下面这几类人：
+
+- 经常写公众号长文，想把“写完 -> 排版 -> 发草稿箱”固定成流程的人
+- 已经在用 Codex / Claude Code，希望让 Agent 直接接住发文动作的人
+- 想把公众号排版沉淀成主题，而不是每篇重新调格式的人
+- 想把本地可用脚本进一步整理成 Skill、Prompt、Release 的人
+
+最适合的场景包括：
+
+- 个人公众号的长文发布
+- 团队内部的内容工作流沉淀
+- AI 协作写作与发布实验
+- 把 Markdown 写作直接接进公众号草稿箱的自动化链路
+
 ## 这套仓库适合谁
 
 - 想把公众号发布动作做成工作流的人
@@ -117,6 +133,28 @@ powershell -ExecutionPolicy Bypass -File "C:\path\to\wechat-draft-publish\publis
   -CoverImagePath "D:\path\cover.jpg" `
   -Theme "bijixia"
 ```
+
+## 推荐工作流
+
+如果你准备把这套 Skill 真正放进日常发文流程，最推荐按下面这条顺序走：
+
+1. 先用 Markdown 模板写稿：
+   - [markdown-article-template.md](./wechat-draft-publish/references/markdown-article-template.md)
+2. 写完后，用检查清单过一遍：
+   - [publish-checklist.md](./wechat-draft-publish/references/publish-checklist.md)
+3. 再用 `bijixia` 或你习惯的主题发到公众号草稿箱
+
+这条工作流的核心是：
+
+- 用 Markdown 先把结构写清楚
+- 用主题统一渲染排版
+- 在发草稿箱前固定检查，不在发布时临时想流程
+
+如果你主要写公众号长文，建议先默认用：
+
+- 模板：`markdown-article-template.md`
+- 主题：`bijixia`
+- 发布前检查：`publish-checklist.md`
 
 ## Markdown 写法建议
 
